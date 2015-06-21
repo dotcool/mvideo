@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ejia.abplayer"
+    android:versionCode="4"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="19" />
+    <!-- 在SDCard中创建与删除文件权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" >
+    </uses-permission>
+    <!-- 往SDCard写入数据权限 -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- wp广告 -->
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.setParameters"
+        android:required="false" />
+    <!-- 阅读消息 -->
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <!-- 接收消息 -->
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+ <permission
+        android:name="com.ejia.abplayer.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
+    <application
+        android:name="com.ejia.abplayer.ABPlayerApplication"
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:icon="@drawable/ic_launcher"
+        android:theme="@style/MyTheme" >
+        <activity
+            android:name="com.ejia.abplayer.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- bili网页内容界面 -->
+        <activity
+            android:name="com.ejia.abplayer.BiliWebviewActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 动画列表内容界面 -->
+        <activity
+            android:name="com.ejia.abplayer.DonghuaActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyTheme" >
+        </activity>
+        <!-- 视频详细内容界面 -->
+        <activity
+            android:name="com.ejia.abplayer.VideoInfoActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 网络电视界面 -->
+        <activity
+            android:name="com.ejia.abplayer.TVActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- 视频播放界面 -->
+        <activity
+            android:name="com.ejia.abplayer.VideoViewActivity"
+            android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:process=":vitamio"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+        <!-- 初始化界面 -->
+        <activity
+            android:name="io.vov.vitamio.activity.InitActivity"
+            android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+        <activity
+            android:name="com.ejia.abplayer.BiliVideoViewActivity"
+            android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:process=":vitamio"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+        
+        <activity 
+            android:name="com.ejia.abplayer.Aty_UserCenter"
+            android:screenOrientation="portrait"
+            ></activity>
+
+        <service
+            android:name=".view.PlayerService"
+            android:process=":vitamio" />
+        <service
+            android:name="io.vov.vitamio.VitamioService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="io.vov.vitamio.IVitamioService" />
+            </intent-filter>
+        </service>
+
+        <!-- Caution! Do not change this app key. It is only for demo usage. -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5586908367e58e216f00a5b3" >
+        </meta-data>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="Umeng" >
+        </meta-data>
+
+        <service
+            android:name="com.umeng.update.net.DownloadingService"
+            android:process=":DownloadingService" >
+        </service>
+
+        <activity
+            android:name="com.umeng.update.UpdateDialogActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+        
+         <meta-data
+            android:name="SUPERID_APPKEY"
+            android:value="Sl58Sm3xxUWCrhSI0mioqT0z" />
+        <meta-data
+            android:name="SUPERID_SECRET"
+            android:value="pLZ55Aa6XdZgLGOGftC2yz8z" />
+
+        <activity
+            android:name="com.isnc.facesdk.aty.Aty_FaceDetect"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
+        </activity>
+        <activity
+            android:name="com.isnc.facesdk.aty.Aty_AgreeItem"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
+        </activity>
+        <activity
+            android:name="com.isnc.facesdk.aty.Aty_EditUserinfo"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.isnc.facesdk.aty.Aty_ClipPicture"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.isnc.facesdk.aty.Aty_NormalFaceDetect"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.isnc.facesdk.aty.Aty_CountryPage"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.isnc.facesdk.aty.Aty_Auth"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.isnc.facesdk.aty.Aty_SecureEmail"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- Required SDK核心功能-->
+        <activity
+            android:name="cn.jpush.android.ui.PushActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.ui.PushActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.ejia.abplayer" />
+            </intent-filter>
+        </activity>
+        <!-- Required  SDK核心功能-->
+        <service
+            android:name="cn.jpush.android.service.DownloadService"
+            android:enabled="true"
+            android:exported="false" >
+        </service>
+    
+        
+        <!-- Required SDK 核心功能-->
+        <service
+            android:name="cn.jpush.android.service.PushService"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTER" />
+                <action android:name="cn.jpush.android.intent.REPORT" />
+                <action android:name="cn.jpush.android.intent.PushService" />
+                <action android:name="cn.jpush.android.intent.PUSH_TIME" />
+                
+            </intent-filter>
+        </service>
+        
+        <!-- Required SDK核心功能-->
+        <receiver
+            android:name="cn.jpush.android.service.PushReceiver"
+            android:enabled="true" >
+             <intent-filter android:priority="1000">
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />   <!--Required  显示通知栏 -->
+                <category android:name="com.ejia.abplayer" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+             <!-- Optional -->
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+   
+        </receiver>
+               <!-- Required SDK核心功能-->
+        <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
+        
+         <!-- Required  . Enable it you can get statistics data with channel -->
+        <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
+        <meta-data android:name="JPUSH_APPKEY" android:value="e6dd8ac8907a9ec1a82ba353" /> <!--  </>值来自开发者平台取得的AppKey-->
+        
+    </application>
+
+</manifest>
